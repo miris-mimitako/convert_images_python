@@ -56,7 +56,7 @@ class CONVERTER():
       self.settings["to_convert_type"] = "jpg"
       print(self.settings["to_convert_type"]) ##d
 
-    if self.settings["to_convert_type"] == "jpg":
+    if self.settings["to_convert_type"] == ".jpg":
       self.to_jpg()
 
     ##E if
