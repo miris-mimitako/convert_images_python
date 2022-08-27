@@ -2,6 +2,7 @@ import json
 from PIL import Image
 import glob
 import os
+import re
 
 class CONVERTER():
 
@@ -10,7 +11,7 @@ class CONVERTER():
   
   ### target_dir: 
   
-  You should specified null or full path.
+  You should specified null or path.
 
   ### converted_files_dir: null
   
@@ -28,34 +29,44 @@ class CONVERTER():
     print (self.settings) ##d
 
     # tareget dir settings
-    if self.settings["target_dir"]:
-      pass
-    else:
+    if not self.settings["target_dir"]:
       self.settings["target_dir"] = "."
 
     # set global target dir setting
-    if self.settings["target_dir"] == ".":
-      self.target_dir = os.getcwd() # set current directry
-      print (self.target_dir) ##d
+    if os.path.isabs(self.settings["target_dir"]):
+      target_path = self.settings["target_dir"]
     else:
-      if os.path.exists(self.settings["target_dir"]):
-        self.target_dir = self.settings["target_dir"]
-      else:
-        raise Exception("Error: Tareget directry does not exist.")
+      target_path = os.path.abspath(self.settings["target_dir"])
 
-    # set converted files dire settings
+    if not os.path.exists(target_path):
+      raise Exception("Error: Tareget directry does not exist.")
   
+  
+    # set converted files dire settings
+    if self.settings["converted_files_dir"]:
+        os.makedirs(self.settings["converted_files_dir"], exist_ok=True)      
 
-  ##E def
+    self.path_list = glob.glob(target_path)
+
+  ##E def __init__
 
   def convert(self):
-    if self.settings["to_convert_type"] == "jpg" | ".jpg" | "jpeg" | ".jpeg":
+    print(self.settings["to_convert_type"])
+    if ("jpg" or ".jpg" or "jpeg" or ".jpeg") in self.settings["to_convert_type"]:
+      self.settings["to_convert_type"] = "jpg"
+      print(self.settings["to_convert_type"]) ##d
+
+    if self.settings["to_convert_type"] == ".jpg":
       self.to_jpg()
 
     ##E if
-  ##E def
+
+  ##E def convert
   
   def to_jpg(self):
+    
+
+
     print("to_jpg")
 
   ##E def
@@ -64,6 +75,6 @@ class CONVERTER():
 
 if __name__=="__main__":
   con = CONVERTER()
-  # con.convert()
+  con.convert()
 
 
