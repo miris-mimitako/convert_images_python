@@ -6,5 +6,6 @@
   "converted_files_dir":null,
   "to_convert_type":"webp",
   "from_convert_type":"",
-  "quality":75
+  "quality":75,
+  "delete_file":false
 }
