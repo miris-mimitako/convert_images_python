@@ -1,9 +1,8 @@
 import json
-from winreg import EnumValue
 from PIL import Image
 import glob
 import os
-import re
+
 
 class CONVERTER():
 
@@ -21,6 +20,10 @@ class CONVERTER():
   ### converted_files_dir: specified
   
   Create new directory and put into converted images. If directory is existed, does not create directory.
+
+  ### quality: 0 ~ 95
+
+  Only jpg image, you can choose compression quality between 0 and 95.
   """
 
   def __init__(self) -> None:
@@ -104,7 +107,7 @@ class CONVERTER():
             img_path = self.converted_path + file_name + ".jpg"
           else:
             img_path = file_path[:-5] + "_converted" + ".jpg"
-          img.save(img_path)
+          img.save(img_path, quality=self.settings["quality"])
         elif ".jpeg" in file_path:
           print ("test: ", file_path) ##d
           img = Image.open(file_path)
@@ -113,7 +116,7 @@ class CONVERTER():
             img_path = self.converted_path + file_name + ".jpg"
           else:
             img_path = file_path[:-5] + "_converted" + ".jpg"
-          img.save(img_path)
+          img.save(img_path, quality=self.settings["quality"])
         elif ".png" in file_path:
           img = Image.open(file_path)
           if self.converted_path:
@@ -122,7 +125,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
-          rgb_img.save(img_path)
+          rgb_img.save(img_path, quality=self.settings["quality"])
         elif ".tiff" in file_path:
           img = Image.open(file_path)
           if self.converted_path:
@@ -131,7 +134,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-5] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
-          rgb_img.save(img_path)
+          rgb_img.save(img_path, quality=self.settings["quality"])
         elif ".tif" in file_path:
           img = Image.open(file_path)
           if self.converted_path:
@@ -140,7 +143,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
-          rgb_img.save(img_path)
+          rgb_img.save(img_path, quality=self.settings["quality"])
         elif ".bmp" in file_path:
           img = Image.open(file_path)
           if self.converted_path:
@@ -149,7 +152,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
-          rgb_img.save(img_path)
+          rgb_img.save(img_path, quality=self.settings["quality"])
         ##E if
       ##E for
     ##E for
