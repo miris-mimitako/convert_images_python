@@ -1,11 +1,11 @@
 {  
-  "version":"0.1.0",
-  "release_date":"2022-08-27",
+  "version":"0.1.1",
+  "release_date":"2022-08-28",
   "target_dir":null,
   "serch_depth":"-1",
   "converted_files_dir":null,
-  "to_convert_type":"webp",
+  "to_convert_type":"jpg",
   "from_convert_type":"",
   "quality":75,
-  "delete_file":false
+  "delete_file":true
 }
