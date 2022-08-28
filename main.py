@@ -116,7 +116,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".jpg"
           img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         elif ".jpeg" in file_path:
           print ("test: ", file_path) ##d
@@ -127,7 +127,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-5] + "_converted" + ".jpg"
           img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         elif ".png" in file_path:
           img = Image.open(file_path)
@@ -138,7 +138,7 @@ class CONVERTER():
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
           rgb_img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         elif ".tiff" in file_path:
           img = Image.open(file_path)
@@ -149,7 +149,7 @@ class CONVERTER():
             img_path = file_path[:-5] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
           rgb_img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         elif ".tif" in file_path:
           img = Image.open(file_path)
@@ -160,7 +160,7 @@ class CONVERTER():
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
           rgb_img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         elif ".bmp" in file_path:
           img = Image.open(file_path)
@@ -171,7 +171,7 @@ class CONVERTER():
             img_path = file_path[:-4] + "_converted" + ".jpg"
           rgb_img = img.convert("RGB")
           rgb_img.save(img_path, quality=self.settings["quality"])
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         ##E if
       ##E for
@@ -196,7 +196,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".png"
           img.save(img_path)
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
         ##E if
       ##E for
     ##E for
@@ -218,7 +218,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".tiff"
           img.save(img_path)
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
 
         ##E if
       ##E for
@@ -243,7 +243,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".bmp"
           img.save(img_path)
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
         ##E if
       ##E for
     ##E for
@@ -267,7 +267,7 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".webp"
           img.save(img_path)
-          os.remove(file_path) # version 0.1.1
+          if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
         ##E if
       ##E for
     ##E for
