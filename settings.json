@@ -5,5 +5,6 @@
   "serch_depth":"-1",
   "converted_files_dir":"./test/test3",
   "to_convert_type":".jpg",
-  "from_convert_type":""
+  "from_convert_type":"",
+  "quality":75
 }
