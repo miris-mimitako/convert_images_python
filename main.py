@@ -183,7 +183,7 @@ class CONVERTER():
       dir_target_path = glob.glob(os.path.join(dir_path,"*"))
       print (dir_target_path) ##d
       for file_path in dir_target_path:
-        if (".jpg" or ".jpeg" or ".tif" or ".tiff" or "bmp") in file_path:
+        if ".jpg" in file_path or ".jpeg" in file_path or ".tif" in file_path or ".tiff" in file_path or "bmp" in file_path: # version 0.1.1
           print ("test: ", file_path) ##d
           if ".jpeg" in file_path:
             file_path = file_path[:-5] + ".jpg"
@@ -207,7 +207,7 @@ class CONVERTER():
       dir_target_path = glob.glob(os.path.join(dir_path,"*"))
       print (dir_target_path) ##d
       for file_path in dir_target_path:
-        if (".jpg" or ".jpeg" or ".png" or "bmp") in file_path:
+        if ".jpg" in file_path or ".jpeg" in file_path or ".png" in file_path or "bmp" in file_path in file_path: # version 0.1.1
           print ("test: ", file_path) ##d
           if ".jpeg" in file_path:
             file_path = file_path[:-5] + ".jpg"
@@ -230,7 +230,7 @@ class CONVERTER():
       dir_target_path = glob.glob(os.path.join(dir_path,"*"))
       print (dir_target_path) ##d
       for file_path in dir_target_path:
-        if (".jpg" or ".jpeg" or ".png" or ".tif" or ".tiff") in file_path:
+        if ".jpg" in file_path or ".jpeg" in file_path or ".png" in file_path or ".tif" in file_path or ".tiff" in file_path: # version 0.1.1
           print ("test: ", file_path) ##d
           if ".jpeg" in file_path:
             file_path = file_path[:-5] + ".jpg"
@@ -252,9 +252,9 @@ class CONVERTER():
   def to_webp(self):
     for dir_path in self.path_list:
       dir_target_path = glob.glob(os.path.join(dir_path,"*"))
-      print (dir_target_path) ##d
+      print ("webp: ", dir_target_path) ##d
       for file_path in dir_target_path:
-        if (".jpg" or ".jpeg" or ".png" or ".tif" or ".tiff" or ".bmp") in file_path:
+        if ".jpg" in file_path or ".jpeg" in file_path or ".png"  in file_path or ".tif" in file_path or ".tiff"  in file_path or ".bmp" in file_path: # version 0.1.1
           print ("test: ", file_path) ##d
           if ".jpeg" in file_path:
             file_path = file_path[:-5] + ".jpg"
@@ -267,6 +267,8 @@ class CONVERTER():
           else:
             img_path = file_path[:-4] + "_converted" + ".webp"
           img.save(img_path)
+          print ("webp converted: ", img_path) ##d
+
           if self.settings["delete_file"]:os.remove(file_path) # version 0.1.1
         ##E if
       ##E for
