@@ -86,6 +86,14 @@ class CONVERTER():
 
     if self.settings["to_convert_type"] == "jpg":
       self.to_jpg()
+    elif self.settings["to_convert_type"] == "png":
+      self.to_png()
+    elif self.settings["to_convert_type"] == "bmp":
+      self.to_bmp()
+    elif self.settings["to_convert_type"] == "tif" or self.settings["to_convert_type"] == "tiff":
+      self.to_tiff()
+    elif self.settings["to_convert_type"] == "webp":
+      self.to_webp()
     else:
       raise Exception ("Type error: to_convert_type cannot read.")
 
@@ -106,7 +114,7 @@ class CONVERTER():
             file_name = file_path[file_path.rfind("\\"):file_path.rfind(".")]
             img_path = self.converted_path + file_name + ".jpg"
           else:
-            img_path = file_path[:-5] + "_converted" + ".jpg"
+            img_path = file_path[:-4] + "_converted" + ".jpg"
           img.save(img_path, quality=self.settings["quality"])
         elif ".jpeg" in file_path:
           print ("test: ", file_path) ##d
@@ -157,6 +165,97 @@ class CONVERTER():
       ##E for
     ##E for
   ##E def to_jpg
+
+  def to_png(self):
+    for dir_path in self.path_list:
+      dir_target_path = glob.glob(os.path.join(dir_path,"*"))
+      print (dir_target_path) ##d
+      for file_path in dir_target_path:
+        if (".jpg" or ".jpeg" or ".tif" or ".tiff" or "bmp") in file_path:
+          print ("test: ", file_path) ##d
+          if ".jpeg" in file_path:
+            file_path = file_path[:-5] + ".jpg"
+          if ".tiff" in file_path:
+            file_path = file_path[:-5] + ".tif"
+          img = Image.open(file_path)
+          if self.converted_path:
+            file_name = file_path[file_path.rfind("\\"):file_path.rfind(".")]
+            img_path = self.converted_path + file_name + ".png"
+          else:
+            img_path = file_path[:-4] + "_converted" + ".png"
+          img.save(img_path)
+        ##E if
+      ##E for
+    ##E for
+  ##E def to_png
+
+  def to_tiff(self):
+    for dir_path in self.path_list:
+      dir_target_path = glob.glob(os.path.join(dir_path,"*"))
+      print (dir_target_path) ##d
+      for file_path in dir_target_path:
+        if (".jpg" or ".jpeg" or ".png" or "bmp") in file_path:
+          print ("test: ", file_path) ##d
+          if ".jpeg" in file_path:
+            file_path = file_path[:-5] + ".jpg"
+          img = Image.open(file_path)
+          if self.converted_path:
+            file_name = file_path[file_path.rfind("\\"):file_path.rfind(".")]
+            img_path = self.converted_path + file_name + ".tiff"
+          else:
+            img_path = file_path[:-4] + "_converted" + ".tiff"
+          img.save(img_path)
+        ##E if
+      ##E for
+    ##E for
+  ##E def to_tiff
+
+  def to_bmp(self):
+    for dir_path in self.path_list:
+      dir_target_path = glob.glob(os.path.join(dir_path,"*"))
+      print (dir_target_path) ##d
+      for file_path in dir_target_path:
+        if (".jpg" or ".jpeg" or ".png" or ".tif" or ".tiff") in file_path:
+          print ("test: ", file_path) ##d
+          if ".jpeg" in file_path:
+            file_path = file_path[:-5] + ".jpg"
+          if ".tiff" in file_path:
+            file_path = file_path[:-5] + ".tif"
+          img = Image.open(file_path)
+          if self.converted_path:
+            file_name = file_path[file_path.rfind("\\"):file_path.rfind(".")]
+            img_path = self.converted_path + file_name + ".bmp"
+          else:
+            img_path = file_path[:-4] + "_converted" + ".bmp"
+          img.save(img_path)
+        ##E if
+      ##E for
+    ##E for
+  ##E def to_tiff
+
+  def to_webp(self):
+    for dir_path in self.path_list:
+      dir_target_path = glob.glob(os.path.join(dir_path,"*"))
+      print (dir_target_path) ##d
+      for file_path in dir_target_path:
+        if (".jpg" or ".jpeg" or ".png" or ".tif" or ".tiff" or ".bmp") in file_path:
+          print ("test: ", file_path) ##d
+          if ".jpeg" in file_path:
+            file_path = file_path[:-5] + ".jpg"
+          if ".tiff" in file_path:
+            file_path = file_path[:-5] + ".tif"
+          img = Image.open(file_path)
+          if self.converted_path:
+            file_name = file_path[file_path.rfind("\\"):file_path.rfind(".")]
+            img_path = self.converted_path + file_name + ".webp"
+          else:
+            img_path = file_path[:-4] + "_converted" + ".webp"
+          img.save(img_path)
+        ##E if
+      ##E for
+    ##E for
+  ##E def to_webp
+
 
   def __del__(self):
     pass
